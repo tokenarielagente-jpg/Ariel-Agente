@@ -154,8 +154,8 @@ export default function App() {
               Comprar Token AG <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <a 
-              href="/ArielAgente_Whitepaper_v2.pdf" 
-              download="ArielAgente_Whitepaper_v2.pdf"
+              href="https://drive.google.com/uc?export=download&id=1oE7Wvv2i9eJqK-G7wpH6qclYU76G-GdJ" 
+              target="_blank"
               className="btn-secondary flex items-center gap-2"
             >
               Baixar Whitepaper <Download className="w-5 h-5" />
@@ -494,8 +494,8 @@ export default function App() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button className="btn-primary">Comprar AG Agora</button>
             <a 
-              href="/ArielAgente_Whitepaper_v2.pdf" 
-              download="ArielAgente_Whitepaper_v2.pdf"
+              href="https://drive.google.com/uc?export=download&id=1oE7Wvv2i9eJqK-G7wpH6qclYU76G-GdJ" 
+              target="_blank"
               className="btn-secondary"
             >
               Baixar Whitepaper
