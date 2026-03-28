@@ -97,8 +97,13 @@ export default function App() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-brand-dark/80 backdrop-blur-xl border-b border-brand-glass-border py-4" : "bg-transparent py-6"}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-brand-blue to-brand-purple rounded-xl flex items-center justify-center neon-glow">
-              <Waves className="text-white w-6 h-6" />
+            <div className="w-10 h-10 bg-gradient-to-br from-brand-blue to-brand-purple rounded-xl flex items-center justify-center neon-glow overflow-hidden">
+              <img 
+                src="https://i.postimg.cc/13fByjNX/Chat-GPT-Image-28-de-mar-de-2026-17-57-28.png" 
+                alt="Ariel Logo" 
+                className="w-8 h-8 object-contain"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <span className="text-2xl font-bold tracking-tighter">
               ARIEL <span className="text-brand-cyan">AGENTE</span>
@@ -197,8 +202,13 @@ export default function App() {
                 className="relative"
               >
                 <div className="absolute -inset-4 bg-brand-cyan/20 blur-3xl rounded-full"></div>
-                <div className="relative glass p-8 aspect-square flex items-center justify-center">
-                  <Waves className="w-48 h-48 text-brand-cyan animate-float" />
+                <div className="relative glass p-8 aspect-square flex items-center justify-center overflow-hidden">
+                  <img 
+                    src="https://i.postimg.cc/13fByjNX/Chat-GPT-Image-28-de-mar-de-2026-17-57-28.png" 
+                    alt="Ariel Agente" 
+                    className="w-[90%] h-[90%] object-contain animate-float"
+                    referrerPolicy="no-referrer"
+                  />
                 </div>
               </motion.div>
             </div>
@@ -509,7 +519,12 @@ export default function App() {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
             <div className="flex items-center gap-2">
-              <Waves className="text-brand-cyan w-6 h-6" />
+              <img 
+                src="https://i.postimg.cc/13fByjNX/Chat-GPT-Image-28-de-mar-de-2026-17-57-28.png" 
+                alt="Ariel Logo" 
+                className="w-8 h-8 object-contain"
+                referrerPolicy="no-referrer"
+              />
               <span className="text-xl font-bold">ARIEL AGENTE</span>
             </div>
             <div className="flex gap-6 text-gray-500 text-sm">
