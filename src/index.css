@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-blue: #0ea5e9;
+  --color-brand-purple: #8b5cf6;
+  --color-brand-cyan: #22d3ee;
+  --color-brand-neon: #00ffcc;
+  --color-brand-dark: #020617;
+  --color-brand-glass: rgba(255, 255, 255, 0.05);
+  --color-brand-glass-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-brand-dark text-white font-sans antialiased;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.15) 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-brand-glass backdrop-blur-md border border-brand-glass-border rounded-2xl;
+  }
+  
+  .neon-glow {
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+  }
+
+  .btn-primary {
+    @apply px-8 py-4 bg-gradient-to-r from-brand-blue to-brand-purple rounded-full font-bold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-4 border border-brand-cyan/50 rounded-full font-bold transition-all duration-300 hover:bg-brand-cyan/10 hover:border-brand-cyan active:scale-95;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
