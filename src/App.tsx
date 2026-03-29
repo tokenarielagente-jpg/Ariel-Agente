@@ -26,34 +26,6 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const ParticleBackground = () => {
-  return (
-    <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {[...Array(20)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-brand-cyan/30 rounded-full"
-          initial={{ 
-            x: Math.random() * 100 + "%", 
-            y: Math.random() * 100 + "%",
-            opacity: Math.random()
-          }}
-          animate={{ 
-            y: ["-10%", "110%"],
-            opacity: [0, 1, 0]
-          }}
-          transition={{ 
-            duration: Math.random() * 10 + 10, 
-            repeat: Infinity, 
-            ease: "linear",
-            delay: Math.random() * 10
-          }}
-        />
-      ))}
-    </div>
-  );
-};
-
 const SectionHeading = ({ title, subtitle }: { title: string; subtitle?: string }) => (
   <div className="text-center mb-16">
     <motion.h2 
@@ -79,8 +51,6 @@ const SectionHeading = ({ title, subtitle }: { title: string; subtitle?: string 
 );
 
 export default function App() {
-  const { scrollYProgress } = useScroll();
-  const opacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -91,17 +61,16 @@ export default function App() {
 
   return (
     <div className="min-h-screen selection:bg-brand-cyan/30 selection:text-brand-cyan">
-      <ParticleBackground />
       
       {/* Navbar */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-brand-dark/80 backdrop-blur-xl border-b border-brand-glass-border py-4" : "bg-transparent py-6"}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-brand-blue to-brand-purple rounded-xl flex items-center justify-center neon-glow overflow-hidden">
+            <div className="flex items-center justify-center">
               <img 
-                src="https://i.postimg.cc/13fByjNX/Chat-GPT-Image-28-de-mar-de-2026-17-57-28.png" 
+                src="https://i.postimg.cc/MK7kwXVG/Chat-GPT-Image-28-de-mar-de-2026-18-32-55.png" 
                 alt="Ariel Logo" 
-                className="w-8 h-8 object-contain"
+                className="w-20 h-20 md:w-28 md:h-28 object-contain"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -113,6 +82,7 @@ export default function App() {
             <a href="#sobre" className="hover:text-brand-cyan transition-colors">Sobre</a>
             <a href="#tokenomics" className="hover:text-brand-cyan transition-colors">Tokenomics</a>
             <a href="#roadmap" className="hover:text-brand-cyan transition-colors">Roadmap</a>
+            <button className="btn-secondary py-2 px-6 text-sm">Compre nosso Bot</button>
             <button className="btn-primary py-2 px-6 text-sm">Comprar AG</button>
           </div>
         </div>
@@ -158,6 +128,9 @@ export default function App() {
             <button className="btn-primary flex items-center gap-2 group">
               Comprar Token AG <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
+            <button className="btn-secondary flex items-center gap-2 group">
+              Compre nosso Bot <Zap className="w-5 h-5 text-brand-cyan" />
+            </button>
             <a 
               href="https://drive.google.com/uc?export=download&id=1oE7Wvv2i9eJqK-G7wpH6qclYU76G-GdJ" 
               target="_blank"
@@ -202,11 +175,12 @@ export default function App() {
                 className="relative"
               >
                 <div className="absolute -inset-4 bg-brand-cyan/20 blur-3xl rounded-full"></div>
-                <div className="relative glass p-8 aspect-square flex items-center justify-center overflow-hidden">
+                <div className="relative glass p-0 aspect-square flex items-center justify-center overflow-hidden">
                   <img 
-                    src="https://i.postimg.cc/13fByjNX/Chat-GPT-Image-28-de-mar-de-2026-17-57-28.png" 
+                    src="https://i.postimg.cc/MK7kwXVG/Chat-GPT-Image-28-de-mar-de-2026-18-32-55.png" 
                     alt="Ariel Agente" 
-                    className="w-[90%] h-[90%] object-contain animate-float"
+                    className="w-[140%] h-[140%] max-w-none max-h-none object-contain animate-float m-0 block"
+                    style={{ transform: 'translateY(10%)' }}
                     referrerPolicy="no-referrer"
                   />
                 </div>
@@ -520,18 +494,28 @@ export default function App() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
             <div className="flex items-center gap-2">
               <img 
-                src="https://i.postimg.cc/13fByjNX/Chat-GPT-Image-28-de-mar-de-2026-17-57-28.png" 
+                src="https://i.postimg.cc/MK7kwXVG/Chat-GPT-Image-28-de-mar-de-2026-18-32-55.png" 
                 alt="Ariel Logo" 
-                className="w-8 h-8 object-contain"
+                className="w-20 h-20 md:w-28 md:h-28 object-contain"
                 referrerPolicy="no-referrer"
               />
               <span className="text-xl font-bold">ARIEL AGENTE</span>
             </div>
             <div className="flex gap-6 text-gray-500 text-sm">
-              <a href="#" className="hover:text-white">Twitter</a>
-              <a href="#" className="hover:text-white">Telegram</a>
-              <a href="#" className="hover:text-white">Discord</a>
-              <a href="#" className="hover:text-white">Medium</a>
+              <span 
+                onClick={() => window.alert("Disponível em breve")} 
+                className="hover:text-white cursor-pointer"
+              >
+                Twitter
+              </span>
+              <a 
+                href="https://t.me/arielagente" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-white"
+              >
+                Telegram
+              </a>
             </div>
           </div>
           <div className="max-w-4xl mx-auto text-center">
