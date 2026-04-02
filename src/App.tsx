@@ -82,7 +82,14 @@ export default function App() {
             <a href="#sobre" className="hover:text-brand-cyan transition-colors">Sobre</a>
             <a href="#tokenomics" className="hover:text-brand-cyan transition-colors">Tokenomics</a>
             <a href="#roadmap" className="hover:text-brand-cyan transition-colors">Roadmap</a>
-            <button className="btn-secondary py-2 px-6 text-sm">Compre nosso Bot</button>
+            <a 
+              href="https://visionary-centaur-3ab79a.netlify.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn-secondary py-2 px-6 text-sm inline-block"
+            >
+              Compre nosso Bot
+            </a>
             <button className="btn-primary py-2 px-6 text-sm">Comprar AG</button>
           </div>
         </div>
@@ -128,9 +135,14 @@ export default function App() {
             <button className="btn-primary flex items-center gap-2 group">
               Comprar Token AG <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="btn-secondary flex items-center gap-2 group">
+            <a 
+              href="https://visionary-centaur-3ab79a.netlify.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn-secondary flex items-center gap-2 group"
+            >
               Compre nosso Bot <Zap className="w-5 h-5 text-brand-cyan" />
-            </button>
+            </a>
             <a 
               href="https://drive.google.com/uc?export=download&id=1oE7Wvv2i9eJqK-G7wpH6qclYU76G-GdJ" 
               target="_blank"
