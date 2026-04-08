@@ -90,7 +90,14 @@ export default function App() {
             >
               Compre nosso Bot
             </a>
-            <button className="btn-primary py-2 px-6 text-sm">Comprar AG</button>
+            <a 
+              href="https://pancakeswap.finance/swap?outputCurrency=0xf641fefb35147b73e6eea4da4b69f8a71b544776&chainId=56&inputCurrency=0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary py-2 px-6 text-sm inline-block"
+            >
+              Comprar AG
+            </a>
           </div>
         </div>
       </nav>
@@ -132,9 +139,14 @@ export default function App() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20"
           >
-            <button className="btn-primary flex items-center gap-2 group">
+            <a 
+              href="https://pancakeswap.finance/swap?outputCurrency=0xf641fefb35147b73e6eea4da4b69f8a71b544776&chainId=56&inputCurrency=0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary flex items-center gap-2 group"
+            >
               Comprar Token AG <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
             <a 
               href="https://visionary-centaur-3ab79a.netlify.app/" 
               target="_blank" 
@@ -449,15 +461,23 @@ export default function App() {
               <Globe className="w-12 h-12 text-brand-cyan mx-auto mb-6" />
               <h4 className="text-xl font-bold mb-4">Carteira Pública</h4>
               <p className="text-gray-400 text-sm mb-6">Acompanhe todos os movimentos da carteira de desenvolvimento em tempo real.</p>
-              <button className="text-brand-cyan flex items-center gap-2 mx-auto text-sm font-bold hover:underline">
+              <a 
+                href="https://bscscan.com/address/0x7B03B4EA7a4795aDafe13d08D88De93a80B2A4e6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-cyan flex items-center gap-2 mx-auto text-sm font-bold hover:underline"
+              >
                 Ver no BscScan <ExternalLink className="w-4 h-4" />
-              </button>
+              </a>
             </div>
             <div className="glass p-8">
               <Lock className="w-12 h-12 text-brand-cyan mx-auto mb-6" />
               <h4 className="text-xl font-bold mb-4">Auditado</h4>
               <p className="text-gray-400 text-sm mb-6">Smart contract revisado por especialistas para garantir sua segurança.</p>
-              <button className="text-brand-cyan flex items-center gap-2 mx-auto text-sm font-bold hover:underline">
+              <button 
+                onClick={() => window.alert("Disponível em Breve")}
+                className="text-brand-cyan flex items-center gap-2 mx-auto text-sm font-bold hover:underline"
+              >
                 Ver Auditoria <ExternalLink className="w-4 h-4" />
               </button>
             </div>
@@ -465,9 +485,14 @@ export default function App() {
               <Layers className="w-12 h-12 text-brand-cyan mx-auto mb-6" />
               <h4 className="text-xl font-bold mb-4">Governança</h4>
               <p className="text-gray-400 text-sm mb-6">A comunidade decide o futuro do projeto através de votações transparentes.</p>
-              <button className="text-brand-cyan flex items-center gap-2 mx-auto text-sm font-bold hover:underline">
-                Snapshot.org <ExternalLink className="w-4 h-4" />
-              </button>
+              <a 
+                href="https://t.me/arielagente" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-brand-cyan flex items-center gap-2 mx-auto text-sm font-bold hover:underline"
+              >
+                Grupo Telegram <ExternalLink className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </div>
@@ -488,7 +513,14 @@ export default function App() {
             Não perca a oportunidade de fazer parte do ecossistema que está revolucionando a utilidade dos tokens na BSC.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="btn-primary">Comprar AG Agora</button>
+            <a 
+              href="https://pancakeswap.finance/swap?outputCurrency=0xf641fefb35147b73e6eea4da4b69f8a71b544776&chainId=56&inputCurrency=0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary inline-block"
+            >
+              Comprar AG Agora
+            </a>
             <a 
               href="https://drive.google.com/uc?export=download&id=1oE7Wvv2i9eJqK-G7wpH6qclYU76G-GdJ" 
               target="_blank"
