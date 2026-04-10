@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { 
   Cpu, 
   Shield, 
@@ -22,9 +22,14 @@ import {
   Waves,
   ArrowRight,
   Globe,
-  Wallet
+  Wallet,
+  X,
+  Send
 } from "lucide-react";
 import { useEffect, useState } from "react";
+
+const PANCAKESWAP_URL = "https://pancakeswap.finance/swap?outputCurrency=0xf641fefb35147b73e6eea4da4b69f8a71b544776&chainId=56&inputCurrency=0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
+const TELEGRAM_URL = "https://t.me/arielagente";
 
 const SectionHeading = ({ title, subtitle }: { title: string; subtitle?: string }) => (
   <div className="text-center mb-16">
@@ -52,11 +57,21 @@ const SectionHeading = ({ title, subtitle }: { title: string; subtitle?: string 
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    
+    // Show popup after 4 seconds
+    const timer = setTimeout(() => {
+      setShowPopup(true);
+    }, 4000);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
@@ -91,7 +106,7 @@ export default function App() {
               Compre nosso Bot
             </a>
             <a 
-              href="https://pancakeswap.finance/swap?outputCurrency=0xf641fefb35147b73e6eea4da4b69f8a71b544776&chainId=56&inputCurrency=0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+              href={PANCAKESWAP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary py-2 px-6 text-sm inline-block"
@@ -140,7 +155,7 @@ export default function App() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20"
           >
             <a 
-              href="https://pancakeswap.finance/swap?outputCurrency=0xf641fefb35147b73e6eea4da4b69f8a71b544776&chainId=56&inputCurrency=0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+              href={PANCAKESWAP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary flex items-center gap-2 group"
@@ -486,7 +501,7 @@ export default function App() {
               <h4 className="text-xl font-bold mb-4">Governança</h4>
               <p className="text-gray-400 text-sm mb-6">A comunidade decide o futuro do projeto através de votações transparentes.</p>
               <a 
-                href="https://t.me/arielagente" 
+                href={TELEGRAM_URL} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-brand-cyan flex items-center gap-2 mx-auto text-sm font-bold hover:underline"
@@ -514,7 +529,7 @@ export default function App() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a 
-              href="https://pancakeswap.finance/swap?outputCurrency=0xf641fefb35147b73e6eea4da4b69f8a71b544776&chainId=56&inputCurrency=0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+              href={PANCAKESWAP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary inline-block"
@@ -553,7 +568,7 @@ export default function App() {
                 Twitter
               </span>
               <a 
-                href="https://t.me/arielagente" 
+                href={TELEGRAM_URL} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="hover:text-white"
@@ -574,6 +589,64 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Telegram Popup */}
+      <AnimatePresence>
+        {showPopup && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowPopup(false)}
+              className="absolute inset-0 bg-brand-dark/80 backdrop-blur-sm"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-md glass p-8 rounded-3xl border-brand-cyan/30 shadow-2xl shadow-brand-cyan/10"
+            >
+              <button 
+                onClick={() => setShowPopup(false)}
+                className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <div className="text-center">
+                <div className="w-20 h-20 bg-brand-cyan/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Send className="w-10 h-10 text-brand-cyan" />
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-4">Comunidade Oficial</h3>
+                
+                <p className="text-gray-300 mb-8 leading-relaxed">
+                  👉 Entre no nosso grupo oficial no Telegram e acompanhe de perto a evolução do Projeto Ariel Agente, com atualizações, análises e novidades em tempo real.
+                </p>
+
+                <a 
+                  href={TELEGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setShowPopup(false)}
+                  className="btn-primary w-full py-4 rounded-2xl flex items-center justify-center gap-3 text-lg font-bold group"
+                >
+                  👉 Entrar no Telegram
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+                
+                <button 
+                  onClick={() => setShowPopup(false)}
+                  className="mt-6 text-gray-500 text-sm hover:text-gray-300 transition-colors"
+                >
+                  Talvez mais tarde
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
