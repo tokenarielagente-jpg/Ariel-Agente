@@ -31,6 +31,69 @@ import { useEffect, useState } from "react";
 const PANCAKESWAP_URL = "https://pancakeswap.finance/swap?outputCurrency=0xf641fefb35147b73e6eea4da4b69f8a71b544776&chainId=56&inputCurrency=0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
 const TELEGRAM_URL = "https://t.me/arielagente";
 
+const FloatingTelegram = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ delay: 1, duration: 0.5 }}
+      className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[90]"
+    >
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 10 }}
+            className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-4 py-2 glass rounded-xl text-sm font-bold whitespace-nowrap border-brand-cyan/30 hidden md:block"
+          >
+            Entrar no Telegram
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <motion.a
+        href={TELEGRAM_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(34, 211, 238, 0.4)" }}
+        whileTap={{ scale: 0.9 }}
+        animate={{
+          y: [0, -4, 0],
+        }}
+        transition={{
+          y: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }
+        }}
+        className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full glass border-brand-cyan/40 text-brand-cyan relative group"
+      >
+        <Send className="w-6 h-6 md:w-8 md:h-8 group-hover:rotate-12 transition-transform" />
+        
+        {/* Pulse effect */}
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0, 0.3],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute inset-0 rounded-full bg-brand-cyan/20 -z-10"
+        />
+      </motion.a>
+    </motion.div>
+  );
+};
+
 const SectionHeading = ({ title, subtitle }: { title: string; subtitle?: string }) => (
   <div className="text-center mb-16">
     <motion.h2 
@@ -647,6 +710,8 @@ export default function App() {
           </div>
         )}
       </AnimatePresence>
+
+      <FloatingTelegram />
     </div>
   );
 }
